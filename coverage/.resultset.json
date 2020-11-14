@@ -1,0 +1,24 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/alyssondaniel/Coding/Ruby/desafio-ruby-on-rails/app/models/transaction_type.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/alyssondaniel/Coding/Ruby/desafio-ruby-on-rails/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1605391984
+  }
+}

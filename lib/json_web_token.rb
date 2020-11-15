@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'uri'
 
+# class JsonWebToken
 class JsonWebToken
   def self.verify(token)
-    JWT.decode(token, nil,
-               true, # Verify the signature of this token
+    JWT.decode(token,
+               nil,
+               true,
                algorithm: 'RS256',
                iss: Rails.application.credentials.auth0[:domain],
                verify_iss: true,

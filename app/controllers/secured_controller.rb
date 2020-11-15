@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# SecuredController
 class SecuredController < ApplicationController
   before_action :authorize_request
 

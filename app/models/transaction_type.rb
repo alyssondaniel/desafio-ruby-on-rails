@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# model TransactionType
 class TransactionType < ApplicationRecord
   enum way: { in: 'Entrada', out: 'Saída' }
 

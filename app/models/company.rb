@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# model Company
 class Company < ApplicationRecord
   validates :name, presence: true
   validates_uniqueness_of :name

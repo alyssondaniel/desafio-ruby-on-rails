@@ -7,6 +7,10 @@ RSpec.describe TransactionType, type: :model do
       .backed_by_column_of_type(:string)
   end
 
+  describe 'Associations' do
+    it { should have_many(:transactions).class_name('Transaction') }
+  end
+
   describe 'Validations' do
     it { should validate_presence_of(:code) }
     it { should validate_presence_of(:description) }

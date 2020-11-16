@@ -1,0 +1,19 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3333:3333"
+    depends_on:
+      - db
+    environment:
+      PG_PASSWORD: password

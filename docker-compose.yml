@@ -7,7 +7,7 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
-  web:
+  backend:
     build: .
     volumes:
       - .:/app
@@ -17,3 +17,16 @@ services:
       - db
     environment:
       PG_PASSWORD: password
+  frontend:
+    build: ./frontend/
+    volumes:
+      - ./frontend:/usr/src/app
+    ports:
+      - "3000:3000"
+    command: yarn start
+    depends_on:
+      - backend
+    # links:
+    #   - backend
+    # tty: true
+    # stdin_open: true

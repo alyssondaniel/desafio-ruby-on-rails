@@ -8,7 +8,7 @@ class JsonWebToken
   def self.verify(token)
     JWT.decode(token,
                nil,
-               true,
+               false,
                algorithm: 'RS256',
                iss: Rails.application.credentials.auth0[:domain],
                verify_iss: true,

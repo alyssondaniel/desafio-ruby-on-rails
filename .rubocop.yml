@@ -40,3 +40,6 @@ Metrics/BlockLength:
 
 Metrics/AbcSize:
   Enabled: false
+
+Naming/FileName:
+  Enabled: false

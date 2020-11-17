@@ -24,11 +24,11 @@
     transaction_type.way = type[:way]
     transaction_type.signal_char = type[:signal_char]
     if transaction_type.save
-      puts "Transaction type #{transaction_type.description} created!"
+      puts "Transaction type #{transaction_type.description} created!" if Rails.env.development?
     else
       puts "Error - Code: #{type[:code]}. #{transaction_type.errors.full_messages.join(', ')}"
     end
-  else
+  elsif Rails.env.development?
     puts "Transaction type ##{transaction_type.description} already exists!"
   end
 end

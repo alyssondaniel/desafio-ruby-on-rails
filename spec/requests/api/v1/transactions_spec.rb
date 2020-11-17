@@ -3,11 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe '/api/v1/transactions', type: :request do
+  let(:headers) { { 'Authorization': "Bearer #{Rails.application.credentials.auth0[:token]}" } }
+
   describe 'GET /index' do
     let!(:transactions) { create_list(:transaction, 5) }
 
     context 'without filter params' do
-      before { get '/api/v1/transactions', as: :json }
+      before { get '/api/v1/transactions', as: :json, headers: headers }
 
       let(:data) { JSON.parse(body) }
 
@@ -22,7 +24,7 @@ RSpec.describe '/api/v1/transactions', type: :request do
       let(:transaction_count) { company.transactions.size }
       let(:filter) { { filter: { company_id: company.id } } }
 
-      before { get '/api/v1/transactions', params: filter }
+      before { get '/api/v1/transactions', params: filter, headers: headers }
 
       let(:data) { JSON.parse(body) }
 
@@ -44,7 +46,7 @@ RSpec.describe '/api/v1/transactions', type: :request do
 
       before(:each) { load "#{Rails.root}/db/seeds.rb" }
 
-      before { post '/api/v1/transactions/upload', params: { transaction: file_valid } }
+      before { post '/api/v1/transactions/upload', params: { transaction: file_valid }, headers: headers }
 
       let(:data) { JSON.parse(body) }
 
@@ -58,7 +60,7 @@ RSpec.describe '/api/v1/transactions', type: :request do
 
       before(:each) { load "#{Rails.root}/db/seeds.rb" }
 
-      before { post '/api/v1/transactions/upload', params: { transaction: file_valid } }
+      before { post '/api/v1/transactions/upload', params: { transaction: file_valid }, headers: headers }
 
       let(:data) { JSON.parse(body) }
 

@@ -4,6 +4,7 @@ module Api
   module V1
     # TransactionsController
     class TransactionsController < ApplicationController
+      before_action :authorize_request
       before_action :prepare_bulk, only: :upload
 
       # GET /api/v1/transactions

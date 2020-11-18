@@ -92,11 +92,14 @@ Boa sorte!
 
   Docker version 19.03.13, build 4484c46d9d
 
-**DOCKER**
+**SETUP**
 
 1. docker-compose up --build
-2. docker-compose run web rails db:setup
-3. docker-compose run web rspec
+2. docker-compose run backend rails db:setup
+
+**TESTES**
+
+1. docker-compose run backend rspec
 
 # Documentação da api
 

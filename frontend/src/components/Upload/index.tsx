@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { useFiles } from "../../context/files";
-
 import { DropContainer, UploadMessage } from "./styles";
+import { Link } from "react-router-dom";
 
 function Upload() {
   const { handleUpload } = useFiles();
@@ -41,10 +41,13 @@ function Upload() {
   }, [isDragActive, isDragReject]);
 
   return (
-    <DropContainer {...getRootProps()}>
-      <input {...getInputProps()} />
-      {renderDragMessage()}
-    </DropContainer>
+    <>
+      <DropContainer {...getRootProps()}>
+        <input {...getInputProps()} />
+        {renderDragMessage()}
+      </DropContainer>
+      <Link to="/listar">Listar</Link>
+    </>
   );
 }
 

@@ -1,23 +1,7 @@
 import React from "react";
 
-import GlobalStyle from "./styles/global";
-import { Container, Content } from "./styles";
+import Routes from "./routes";
 
-import Upload from "./components/Upload";
-import FileList from "./components/FileList";
-
-import { FileProvider } from "./context/files";
-
-const App: React.FC = () => (
-  <FileProvider>
-    <Container>
-      <Content>
-        <Upload />
-        <FileList />
-      </Content>
-      <GlobalStyle />
-    </Container>
-  </FileProvider>
-);
+const App: React.FC = () => <Routes />
 
 export default App;

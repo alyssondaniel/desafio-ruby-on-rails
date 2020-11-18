@@ -9,7 +9,15 @@ module Api
 
       # GET /api/v1/transactions
       def index
-        @transactions = Transaction.all
+        @transactions = Transaction
+                        .select('transactions.*,
+            transaction_types.code type_code,
+            transaction_types.description type_description,
+            transaction_types.way type_way,
+            transaction_types.signal_char type_signal_char,
+            companies.name company_name,
+            companies.balance company_balance')
+                        .joins(:transaction_type, :company).all
 
         if params[:filter]
           filter = params[:filter]
@@ -19,7 +27,7 @@ module Api
           end
         end
 
-        render json: { transactions: @transactions, company: @company }
+        render json: { transactions: @transactions.order(:occurrence_at), company: @company }
       end
 
       # POST /api/v1/transactions/upload

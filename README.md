@@ -48,7 +48,7 @@ Sua tarefa é criar uma interface web que aceite upload do [arquivo CNAB](https:
 | Data  | 2  | 9 | 8 | Data da ocorrência
 | Valor | 10 | 19 | 10 | Valor da movimentação. *Obs.* O valor encontrado no arquivo precisa ser divido por cem(valor / 100.00) para normalizá-lo.
 | CPF | 20 | 30 | 11 | CPF do beneficiário
-| Cartão | 31 | 42 | 12 | Cartão utilizado na transação 
+| Cartão | 31 | 42 | 12 | Cartão utilizado na transação
 | Hora  | 43 | 48 | 6 | Hora da ocorrência atendendo ao fuso de UTC-3
 | Dono da loja | 49 | 62 | 14 | Nome do representante da loja
 | Nome loja | 63 | 81 | 19 | Nome da loja
@@ -85,3 +85,42 @@ Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/da
 ---
 
 Boa sorte!
+
+#######
+
+# Instalação e configuração
+
+  Docker version 19.03.13, build 4484c46d9d
+
+**DOCKER**
+
+1. docker-compose up --build
+2. docker-compose run web rails db:setup
+3. docker-compose run web rspec
+
+# Documentação da api
+
+**PRINCIPAIS TECNOLOGIAS**
+
+1. Ruby 2.7.2
+2. Rails 6.0.3.4
+3. RSpec 3.10
+4. Guard 2.16.2
+5. Simplecov 0.19.1
+6. Rubocop 1.3.0
+7. PostgreSQL 13.1
+
+**AUTENTICAÇÃO**
+
+1. https://auth0.com (Usar Authorization Bearer na headers com o token do site)
+2. adicionar o token no arquivo `frontend/services/api.ts`
+
+**BASE URL**
+
+1. http://localhost:3333
+
+**ENDPOINTS**
+
+1. GET  /api/v1/transactions
+2. POST /api/v1/transactions/upload
+3. GET  /api/v1/companyes

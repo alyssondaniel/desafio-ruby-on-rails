@@ -11,11 +11,6 @@ import filesize from "filesize";
 import api from "../services/api";
 
 export interface ITransaction {
-  // _id: string;
-  // name: string;
-  // size: number;
-  // key: string;
-  // url: string;
   id: string,
   transaction_type_id: number,
   company_id: number,
@@ -23,11 +18,22 @@ export interface ITransaction {
   amount: string,
   document: string,
   card_number: string,
-  owner_name: string
+  owner_name: string,
+  type_code: number,
+  type_description: string,
+  type_way: string,
+  type_signal_char: string,
+  company_name: string,
+  company_balance: string,
 }
 export interface ICompany {
   id: string,
   name: string,
+  balance: string,
+}
+export interface IData {
+  transactions: ITransaction[];
+  company: ICompany;
 }
 export interface IFile {
   id: string;
@@ -45,11 +51,6 @@ interface IFileContextData {
   uploadedFiles: IFile[];
   deleteFile(id: string): void;
   handleUpload(file: any): void;
-}
-
-interface IData {
-  transactions: ITransaction[];
-  company: ICompany;
 }
 
 const FileContext = createContext<IFileContextData>({} as IFileContextData);
